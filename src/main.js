@@ -1,7 +1,7 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
@@ -29,7 +29,6 @@ requireComponent.keys().forEach(fileName => {
     )
   )
 
-
   // Register component globally
   Vue.component(
     componentName,
@@ -40,10 +39,10 @@ requireComponent.keys().forEach(fileName => {
   )
 })
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')

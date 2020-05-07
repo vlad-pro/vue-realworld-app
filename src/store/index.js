@@ -1,11 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
-
-Vue.use(Vuex);
+import Vue from 'vue'
+import Vuex from 'vuex'
+import EventService from '@/services/EventService.js'
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: { id: 'abc123', name: 'Player1'},
+    user: { id: 'abc123', name: 'Player1' },
     categories: [
       'sustainability',
       'nature',
@@ -16,20 +16,34 @@ export default new Vuex.Store({
       'community'
     ],
     todos: [
-      { id: 1, text: '...', done: true},
-      { id: 2, text: '...', done: false},
-      { id: 3, text: '...', done: true},
-      { id: 4, text: '...', done: false}
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false },
+      { id: 3, text: '...', done: true },
+      { id: 4, text: '...', done: false }
     ],
     events: [
-      { id: 1, title: '...', organizer: '...'},
-      { id: 2, title: '...', organizer: '...'},
-      { id: 3, title: '...', organizer: '...'},
-      { id: 4, title: '...', organizer: '...'}
+      // { id: 1, title: '...', organizer: '...' },
+      // { id: 2, title: '...', organizer: '...' },
+      // { id: 3, title: '...', organizer: '...' },
+      // { id: 4, title: '...', organizer: '...' }
     ]
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD_EVENT(state, event) {
+      state.events.push(event)
+    }
+  },
+  actions: {
+    createEvent({ commit }, event) {
+      return EventService.postEvent(event)
+        .then(() => {
+          commit('ADD_EVENT', event)
+        })
+        .catch(() => {
+          console.log('There was a problem with creating your event')
+        })
+    }
+  },
   modules: {},
   getters: {
     catLength: state => {
@@ -45,4 +59,4 @@ export default new Vuex.Store({
       return state.events.find(event => event.id === id)
     }
   }
-});
+})

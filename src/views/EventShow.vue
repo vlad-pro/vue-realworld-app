@@ -18,10 +18,16 @@
 
     <h2>
       Attendees
-      <span class="badge -fill-gradient">{{ event.attendees ? event.attendees.length : 0 }}</span>
+      <span class="badge -fill-gradient">{{
+        event.attendees ? event.attendees.length : 0
+      }}</span>
     </h2>
     <ul class="list-group">
-      <li v-for="(attendee, index) in event.attendees" :key="index" class="list-item">
+      <li
+        v-for="(attendee, index) in event.attendees"
+        :key="index"
+        class="list-item"
+      >
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
@@ -41,24 +47,20 @@ export default {
 <script>
 import EventService from '@/services/EventService.js'
 export default {
-  props: [
-    'id'
-  ],
+  props: ['id'],
   data() {
-    return { 
-      event: {
-
-      }
+    return {
+      event: {}
     }
   },
   created() {
-    EventService.getEvent(this.id).
-    then(response => {
-      this.event = response.data
-    })
-    .catch(error => {
-      console.log(error.response)
-    })
+    EventService.getEvent(this.id)
+      .then(response => {
+        this.event = response.data
+      })
+      .catch(error => {
+        console.log(error.response)
+      })
   }
 }
 </script>
