@@ -46,8 +46,8 @@ export default new Vuex.Store({
           console.log('There was a problem with creating your event')
         })
     },
-    fetchEvents({ commit }) {
-      EventService.getEvents()
+    fetchEvents({ commit }, { perPage, page }) {
+      EventService.getEvents(perPage, page)
         .then(response => {
           commit('SET_EVENTS', response.data)
         })
