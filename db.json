@@ -98,6 +98,42 @@
       "date": "2020-05-07T06:08:00.000Z",
       "time": "10:00",
       "attendees": []
+    },
+    {
+      "id": 5809390,
+      "user": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "category": "education",
+      "organizer": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "title": "Learnmesomevue",
+      "description": "vue mastery",
+      "location": "Homr",
+      "date": "2020-05-09T18:22:00.000Z",
+      "time": "15:00",
+      "attendees": []
+    },
+    {
+      "id": 553084,
+      "user": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "category": "community",
+      "organizer": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "title": "Racing event",
+      "description": "Racing",
+      "location": "Race track",
+      "date": "2020-05-10T18:23:00.000Z",
+      "time": "12:00",
+      "attendees": []
     }
   ]
 }
