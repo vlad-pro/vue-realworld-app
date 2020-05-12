@@ -35,26 +35,42 @@ export const mutations = {
 }
 
 export const actions = {
-  createEvent({ commit }, event) {
+  createEvent({ commit, dispatch }, event) {
     return EventService.postEvent(event)
       .then(() => {
         commit('ADD_EVENT', event)
+        const notification = {
+          type: 'success',
+          messsage: 'Your event has been created'
+        }
+        dispatch('notification/add', notification, { root: true })
       })
-      .catch(() => {
-        console.log('There was a problem with creating your event')
+      .catch((error) => {
+        // console.log('There was a problem with creating your event')
+        const notification = {
+          type: 'error',
+          messsage: 'There was a problem creating event:' + error.message
+        }
+        dispatch('notification/add', notification, { root: true })
+        throw error
       })
   },
-  fetchEvents({ commit }, { perPage, page }) {
+  fetchEvents({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)
       .then(response => {
         commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']))
         commit('SET_EVENTS', response.data)
       })
       .catch(error => {
-        console.log('Houston we have got a problem: ' + error)
+        // console.log('Houston we have got a problem: ' + error)
+        const notification = {
+          type: 'error',
+          messsage: 'There was a problem fetching events:' + error.message
+        }
+        dispatch('notification/add', notification, { root: true })
       })
   },
-  fetchEvent({ commit, getters }, id) {
+  fetchEvent({ commit, getters, dispatch }, id) {
     var event = getters.getEventById(id)
     if (event) {
       commit('SET_EVENT', event)
@@ -64,7 +80,12 @@ export const actions = {
           commit('SET_EVENT', response.data)
         })
         .catch(error => {
-          console.log(error.response)
+          // console.log(error.response)
+          const notification = {
+            type: 'error',
+            messsage: 'There was a problem fetching event:' + error.message
+          }
+          dispatch('notification/add', notification, { root: true })
         })
     }
   }

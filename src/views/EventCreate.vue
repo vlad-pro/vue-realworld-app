@@ -90,6 +90,7 @@ export default {
         })
         this.event = this.createFreshEventObject()
       })
+      // .catch(() => {})
     },
     createFreshEventObject() {
       const user = this.$store.state.user.user
