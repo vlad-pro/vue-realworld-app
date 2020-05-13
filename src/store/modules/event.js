@@ -16,7 +16,8 @@ export const state = {
     // { id: 4, title: '...', organizer: '...' }
   ],
   eventsTotal: 0,
-  event: {}
+  event: {},
+  perPage: 3
 }
 
 export const mutations = {
@@ -39,9 +40,10 @@ export const actions = {
     return EventService.postEvent(event)
       .then(() => {
         commit('ADD_EVENT', event)
+        commit('SET_EVENT', event)
         const notification = {
           type: 'success',
-          messsage: 'Your event has been created'
+          message: 'Your event has been created'
         }
         dispatch('notification/add', notification, { root: true })
       })
@@ -49,7 +51,7 @@ export const actions = {
         // console.log('There was a problem with creating your event')
         const notification = {
           type: 'error',
-          messsage: 'There was a problem creating event:' + error.message
+          message: 'There was a problem creating event:' + error.message
         }
         dispatch('notification/add', notification, { root: true })
         throw error
@@ -65,7 +67,7 @@ export const actions = {
         // console.log('Houston we have got a problem: ' + error)
         const notification = {
           type: 'error',
-          messsage: 'There was a problem fetching events:' + error.message
+          message: 'There was a problem fetching events:' + error.message
         }
         dispatch('notification/add', notification, { root: true })
       })
@@ -83,7 +85,7 @@ export const actions = {
           // console.log(error.response)
           const notification = {
             type: 'error',
-            messsage: 'There was a problem fetching event:' + error.message
+            message: 'There was a problem fetching event:' + error.message
           }
           dispatch('notification/add', notification, { root: true })
         })
