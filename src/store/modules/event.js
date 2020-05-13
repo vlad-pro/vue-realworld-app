@@ -45,7 +45,7 @@ export const actions = {
         }
         dispatch('notification/add', notification, { root: true })
       })
-      .catch((error) => {
+      .catch(error => {
         // console.log('There was a problem with creating your event')
         const notification = {
           type: 'error',

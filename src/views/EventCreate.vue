@@ -1,13 +1,6 @@
 <template>
   <div>
     <h1>Create Event, {{ user.name }}</h1>
-    <p>This event was created by {{ user.id }}</p>
-    <p>There are {{ catLength }} categories</p>
-    <ul>
-      <li v-for="cat in categories" :key="cat">{{ cat }}</li>
-    </ul>
-    <p>{{ getEvent(1) }}</p>
-    <p>{{ getEventById(3) }}</p>
     <form @submit.prevent="createEvent">
       <label>Select a category</label>
       <select v-model="event.category">
@@ -83,14 +76,16 @@ export default {
   },
   methods: {
     createEvent() {
-      this.$store.dispatch('event/createEvent', this.event).then(() => {
-        this.$router.push({
-          name: 'event-show',
-          params: { id: this.event.id }
+      this.$store
+        .dispatch('event/createEvent', this.event)
+        .then(() => {
+          this.$router.push({
+            name: 'event-show',
+            params: { id: this.event.id }
+          })
+          this.event = this.createFreshEventObject()
         })
-        this.event = this.createFreshEventObject()
-      })
-      // .catch(() => {})
+        .catch(() => {})
     },
     createFreshEventObject() {
       const user = this.$store.state.user.user
