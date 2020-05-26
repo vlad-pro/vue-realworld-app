@@ -62,6 +62,10 @@ const routes = [
   {
     path: '*',
     redirect: { name: '404', params: { resource: 'page' } }
+  },
+  {
+    path: '/example',
+    name: 'example'
   }
 ]
 
