@@ -332,6 +332,24 @@
       "date": "2020-05-08T06:11:00.000Z",
       "time": "13:00",
       "attendees": []
+    },
+    {
+      "id": 4622278,
+      "user": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "title": "sdfsdf",
+      "description": "sdfsdf",
+      "location": "sdfsdf",
+      "date": "2020-05-08T21:48:00.000Z",
+      "time": "4:00",
+      "attendees": []
     }
   ]
 }
