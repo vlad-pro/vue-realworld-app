@@ -350,6 +350,24 @@
       "date": "2020-05-08T21:48:00.000Z",
       "time": "4:00",
       "attendees": []
+    },
+    {
+      "id": 9285703,
+      "user": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "category": "animal welfare",
+      "organizer": {
+        "id": "abc123",
+        "name": "Player1"
+      },
+      "title": "Cooling vests for Bulldogies",
+      "description": "To keep 'em cool",
+      "location": "VanCity",
+      "date": "2020-05-31T00:32:00.000Z",
+      "time": "9:00",
+      "attendees": []
     }
   ]
 }
